@@ -1,0 +1,10 @@
+packages/
+.vs/
+
+[Oo]bj
+[Bb]in
+[Dd]ebug
+[Bb]uild/
+
+*.suo
+*.csproj.user

@@ -1,0 +1,71 @@
+CREATE TABLE SMS_LOG
+(
+  ID              NUMBER(20)                    NOT NULL,
+  SMS_TYPE        VARCHAR2(10 BYTE),
+  REF_ID          VARCHAR2(20 BYTE),
+  REF_TYPE        VARCHAR2(20 BYTE),
+  REF_LOC         NUMBER(3),
+  IS_SENT         VARCHAR2(1 BYTE)              DEFAULT 'N',
+  DATE_CREATED    DATE                          DEFAULT sysdate,
+  DATE_SENT       DATE,
+  SENT_MESSAGE    VARCHAR2(1000 BYTE),
+  REMARKS         VARCHAR2(1000 BYTE),
+  TRANSACTION_ID  VARCHAR2(200 BYTE),
+  MOBILE_NO       VARCHAR2(25 BYTE),
+  REG_NO          VARCHAR2(10 BYTE),
+  MODEL_NAME      VARCHAR2(35 BYTE),
+  RENT_DATE       DATE,
+  DATE_IN         DATE,
+  TOT_DAYS        NUMBER(6),
+  TIME_OUT        DATE,
+  TIME_IN         DATE,
+  TOT_INV_AMT     NUMBER(10,2)
+)
+TABLESPACE FLEETTB
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            MINEXTENTS       1
+            MAXEXTENTS       2147483645
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+CREATE UNIQUE INDEX F_SMS_PK ON SMS_LOG
+(ID)
+LOGGING
+TABLESPACE FLEETTB
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            MINEXTENTS       1
+            MAXEXTENTS       2147483645
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOPARALLEL;
+
+
+ALTER TABLE SMS_LOG ADD (
+  CONSTRAINT F_SMS_PK PRIMARY KEY (ID)
+    USING INDEX 
+    TABLESPACE FLEETTB
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                MINEXTENTS       1
+                MAXEXTENTS       2147483645
+                PCTINCREASE      0
+               ));
